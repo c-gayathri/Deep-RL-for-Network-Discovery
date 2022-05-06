@@ -321,12 +321,12 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
         print('size:')
         print(torch.transpose(self.assign_tensor, 1, 2).size())
         print('\n\n\n\n')
-        debug_pred_adj0 = torch.mm(self.assign_tensor, torch.transpose(self.assign_tensor, 1, 2))
-        print('debug_pred_adj0')
-        print('type:')
-        print(type(debug_pred_adj0))
-        print('size:')
-        print(debug_pred_adj0.size)
+        # debug_pred_adj0 = torch.mm(self.assign_tensor, torch.transpose(self.assign_tensor, 1, 2))
+        # print('debug_pred_adj0')
+        # print('type:')
+        # print(type(debug_pred_adj0))
+        # print('size:')
+        # print(debug_pred_adj0.size)
         print('----------------------------------------')
 
 
