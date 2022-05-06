@@ -1,0 +1,60 @@
+What does train.py do?
+
+# Most relevant arguments:
+# --samples         | No. of influence sample graphs |
+# --infl-budget     | Budget for no. of queries |
+# --eps             | No. of episodes |
+# --buffer-size
+# --gcn_layers      | Before each pooling |
+# --step_reward
+# --bad_reward      | Reward when you choose an action from an active node |
+# --norm_reward     | If self.normalize: self.reward = self.reward_/self.opt_reward || else: self.reward = self.reward_ - self.opt_reward |
+# --max_reward      | If action == -1: (if min and max == None) |
+# --min_reward      | self.reward = np.clip(self.reward, self.clip_min, self.clip_max) |
+# --lr              | Learning rate of actor-critic in DQN trainer |
+# --gamma           | td_error = q1 - (r+self.gamma*q2) |
+# --epsilon         | Epsilon exploration | 
+# --batch_size
+# --walk_len        | For walk simulations in DeepWalk |
+# --num_walks       | For walk simulations in DeepWalk |
+# --win             | Word2Vec window size used in DeepWalk training |
+# --emb_iters       | Word2Vec epochs for DeepWalk training |
+# --eps_decay       | Just multiply for decay |
+# --extra-seeds     | Initial number of random seeds |
+
+For NUM_EP no. of episodes,
+
+    choose: a random graph, the seeds,
+        its environment, its optimum objective (when you perform IM with full knowledge of the graph)
+        & change objective (Change is when you choose influencers at random (I think?))
+
+    Embed the nodes as features in DeepWalk
+
+    For stps in budget:
+
+        If exploit:
+            Get 2 action values with critic forward and pick one with 0.5 probability
+        If explore:
+            Choose at random
+        
+        Perform action
+
+        Get new embedding on the environment
+
+        If last step:
+            Add influence spread to reward and set node attributes to zero
+
+        Take increase in number of discovered nodes as reward
+        Add to total reward
+
+        Calculate r1:
+            r1=r+ (1/(len(g)))*(t-t0)
+            if last step: r1 = r1/opt
+        Add to total r1
+
+        Calculate TD 
+        Add to replay buffer 
+
+        Print results
+
+        
