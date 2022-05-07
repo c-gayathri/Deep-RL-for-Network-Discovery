@@ -76,11 +76,11 @@ gparams_path = 'graph_extreme.pickle'
 start = time.time()
 
 g_paths = [
-    '/data/rt/copen.pkl',
+    'Mine/data/rt/copen.pkl',
     #'data/rt/occupy.pkl'
 ]
 
-gpickle_path = '/sbm_400.gpickle'
+gpickle_path = 'Mine/sbm_400.gpickle'
 
 
 syn = False
