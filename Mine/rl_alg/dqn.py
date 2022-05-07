@@ -279,6 +279,34 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
             # CHANGED
             # adj = torch.transpose(self.assign_tensor, 1, 2) @ adj @ self.assign_tensor
             temp_tensor = self.assign_tensor.squeeze()
+
+            print('----------------DEBUG------------------')
+            print('adj')
+            print('type:')
+            print(type(adj))
+            print('size:')
+            print(adj.size())
+            print('\n\n\n\n')
+            print('temp_tensor')
+            print('type:')
+            print(type(temp_tensor))
+            print('size:')
+            print(temp_tensor.size())
+            print('\n\n\n\n')
+            print('temp_tensor transposed')
+            print('type:')
+            print(type(torch.transpose(temp_tensor, 0,1)))
+            print('size:')
+            print(torch.transpose(temp_tensor, 0,1).size())
+            print('\n\n\n\n')
+            print('torch.transpose(temp_tensor, 0,1).mm(adj)')
+            print(torch.transpose(temp_tensor, 0,1).mm(adj))
+            print('torch.transpose(temp_tensor, 0,1).mm(adj).mm(temp_tensor)')
+            print(torch.transpose(temp_tensor, 0,1).mm(adj).mm(temp_tensor))
+            print('\n\n\n')
+            print('-------------------------------------')
+
+
             adj = torch.transpose(temp_tensor, 0,1).mm(adj).mm(temp_tensor)
             x_a = x
 
