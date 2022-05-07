@@ -278,7 +278,8 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
 
             # CHANGED
             # adj = torch.transpose(self.assign_tensor, 1, 2) @ adj @ self.assign_tensor
-            adj = torch.transpose(self.assign_tensor, 1, 2).mm(adj).mm(self.assign_tensor)
+            temp_tensor = self.assign_tensor.squeeze()
+            adj = torch.transpose(temp_tensor, 0,1).mm(adj).mm(temp_tensor)
             x_a = x
 
             embedding_tensor = self.gcn_forward(x, adj, 
