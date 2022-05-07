@@ -19,6 +19,8 @@ from rl_alg.utils import get_torch_device
 # from collections.abc import Iterable
 EPS = 0.003
 
+#I am with stupid
+
 class GcnEncoderGraph(nn.Module):
     def __init__(self, input_dim, hidden_dim, embedding_dim, num_layers,
             pred_hidden_dims=[], concat=True, bn=True, dropout=0.0, args=None, use_cuda=True, num_aggs=1):
