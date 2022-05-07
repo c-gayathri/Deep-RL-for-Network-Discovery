@@ -334,7 +334,7 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
 
 
         assign_tensor_ = self.assign_tensor.squeeze()
-        pred_adj0 = assign_tensor_.mm(torch.transpose(assign_tensor_, 1, 2))
+        pred_adj0 = assign_tensor_.mm(torch.transpose(assign_tensor_, 0,1))
         tmp = pred_adj0
         pred_adj = pred_adj0
         for adj_pow in range(adj_hop-1):
