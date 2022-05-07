@@ -44,7 +44,7 @@ import logging, argparse
 
 
 
-gparams_path = 'graph_extreme.pickle'
+gparams_path = 'Mine/graph_extreme.pickle'
 
 # Most relevant arguments: 
 # --fairness        | whether to account for fairness | --- 1 ---
