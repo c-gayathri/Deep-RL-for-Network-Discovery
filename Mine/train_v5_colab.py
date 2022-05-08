@@ -80,7 +80,7 @@ g_paths = [
     #'data/rt/occupy.pkl'
 ]
 
-gpickle_path = 'Mine/sbm_400_4.gpickle'
+gpickle_path = 'Mine/sbm_700.gpickle' # p_in = 0.005; p_out = 0.001
 
 
 syn = False
