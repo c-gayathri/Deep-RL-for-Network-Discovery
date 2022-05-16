@@ -1,0 +1,14 @@
+###### Requirements without Version Specifiers ######
+numpy
+networkx
+torch
+matplotlib
+Pillow
+pandas
+joblib
+tqdm
+gensim
+tensorflow
+fastdtw
+
+###### Requirements with Version Specifiers ######

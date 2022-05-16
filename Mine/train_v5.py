@@ -3,6 +3,7 @@
 # Smaller graph
 
 #GCNQ: Multi Q
+import faulthandler
 import time
 import math
 import numpy as np
@@ -43,7 +44,7 @@ import gc
 import logging, argparse
 
 
-
+faulthandler.enable()
 gparams_path = 'graph_extreme.pickle'
 
 # Most relevant arguments: 
@@ -80,7 +81,7 @@ g_paths = [
     #'data/rt/occupy.pkl'
 ]
 
-#gpickle_path = 'sbm_400.gpickle'
+gpickle_path = 'sbm_400.gpickle'
 
 
 syn = False
@@ -498,7 +499,11 @@ def get_action_curr2(s, emb,nodes):
 
 if __name__ == "__main__":
 
+    print(1)
+
     node_attrs = make_const_attrs(g,input_dim)
+
+    print(2)
 
     n_iter = 0
     try:
@@ -516,6 +521,7 @@ if __name__ == "__main__":
             g = graphs[idx]
             opt = opts[idx]
             change_score = ch[idx]
+
 
             print('--------------------- CODE PRINT ----------------------------\n\n\n\n\n')
             print("Choosing %s"%(g_paths[idx]))

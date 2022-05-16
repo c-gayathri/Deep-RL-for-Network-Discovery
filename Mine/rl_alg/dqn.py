@@ -19,8 +19,6 @@ from rl_alg.utils import get_torch_device
 # from collections.abc import Iterable
 EPS = 0.003
 
-#I am with stupid
-
 class GcnEncoderGraph(nn.Module):
     def __init__(self, input_dim, hidden_dim, embedding_dim, num_layers,
             pred_hidden_dims=[], concat=True, bn=True, dropout=0.0, args=None, use_cuda=True, num_aggs=1):
@@ -53,9 +51,9 @@ class GcnEncoderGraph(nn.Module):
         
         for m in self.modules():
             if isinstance(m, GraphConv):
-                m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+                m.weight.data = init.xavier_uniform_(m.weight.data, gain=nn.init.calculate_gain('relu'))
                 if m.bias is not None:
-                    m.bias.data = init.constant(m.bias.data, 0.0)
+                    m.bias.data = init.constant_(m.bias.data, 0.0)
 
     def build_conv_layers(self, input_dim, hidden_dim, embedding_dim, num_layers, add_self,
             normalize=False, dropout=0.0):
@@ -219,9 +217,9 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
 
         for m in self.modules():
             if isinstance(m, GraphConv):
-                m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+                m.weight.data = init.xavier_uniform_(m.weight.data, gain=nn.init.calculate_gain('relu'))
                 if m.bias is not None:
-                    m.bias.data = init.constant(m.bias.data, 0.0)
+                    m.bias.data = init.constant_(m.bias.data, 0.0)
 
     def forward(self, x, adj, batch_num_nodes=None,compute_loss=True, **kwargs):
         if 'assign_x' in kwargs:

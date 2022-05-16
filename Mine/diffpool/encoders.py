@@ -32,10 +32,10 @@ class GraphConv(nn.Module):
         self.layer = nn.Linear(input_dim, input_dim)
         self.layer.weight.data = utls.fanin_init(self.layer.weight.data.size())
         self.weight = nn.Parameter(torch.FloatTensor(input_dim, output_dim).to(self.device))
-        self.weight.data = init.xavier_uniform(self.weight.data, gain=nn.init.calculate_gain('relu'))
+        self.weight.data = init.xavier_uniform_(self.weight.data, gain=nn.init.calculate_gain('relu'))
         if bias:
             self.bias = nn.Parameter(torch.FloatTensor(output_dim).to(self.device))
-            self.bias.data = init.constant(self.bias.data, 0.0)
+            self.bias.data = init.constant_(self.bias.data, 0.0)
         else:
             self.bias = None
 
@@ -88,9 +88,9 @@ class GcnEncoderGraph(nn.Module):
 
         for m in self.modules():
             if isinstance(m, GraphConv):
-                m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+                m.weight.data = init.xavier_uniform_(m.weight.data, gain=nn.init.calculate_gain('relu'))
                 if m.bias is not None:
-                    m.bias.data = init.constant(m.bias.data, 0.0)
+                    m.bias.data = init.constant_(m.bias.data, 0.0)
 
     def build_conv_layers(self, input_dim, hidden_dim, embedding_dim, num_layers, add_self,
             normalize=False, dropout=0.0):
@@ -310,9 +310,9 @@ class SoftPoolingGcnEncoder(GcnEncoderGraph):
 
         for m in self.modules():
             if isinstance(m, GraphConv):
-                m.weight.data = init.xavier_uniform(m.weight.data, gain=nn.init.calculate_gain('relu'))
+                m.weight.data = init.xavier_uniform_(m.weight.data, gain=nn.init.calculate_gain('relu'))
                 if m.bias is not None:
-                    m.bias.data = init.constant(m.bias.data, 0.0)
+                    m.bias.data = init.constant_(m.bias.data, 0.0)
 
     def forward(self, x, adj, batch_num_nodes, **kwargs):
         if 'assign_x' in kwargs:

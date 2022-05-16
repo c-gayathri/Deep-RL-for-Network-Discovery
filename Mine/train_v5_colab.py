@@ -49,7 +49,7 @@ gparams_path = 'Mine/graph_extreme.pickle'
 # Most relevant arguments: 
 # --fairness        | whether to account for fairness | --- 1 ---
 # --newFile         | whether to create a new file |    --- 0 ---
-# --fileName        | Name of the file |                --- epsData_v4.txt ---
+# --fileName        | Name of the file |                --- epsData.txt ---
 # --factor          | fator multiplied with reward |    --- 1 --- 
 # --alpha           | alpha from the welfare function | --- 1 ---
 # --samples         | No. of influence sample graphs |  --- 100 ---
@@ -96,7 +96,7 @@ def arg_parse():
                     help='alpha in welfare optimisation function')
     parser.add_argument('--newFile',dest='newFile', type=str,default=0,
                     help='whether to create a newFile')
-    parser.add_argument('--fileName', dest='fileName', type=str,default='epsData_v4.txt',
+    parser.add_argument('--fileName', dest='fileName', type=str,default='epsData.txt',
                     help='name of file to store outputs')
     parser.add_argument('--factor',dest='factor', type=str,default=1,
                     help='reward factor')
