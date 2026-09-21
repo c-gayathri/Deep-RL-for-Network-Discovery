@@ -1,0 +1,50 @@
+# Operating-system and editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Python caches and environments
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+.venv/
+venv/
+env/
+
+# Notebook state
+.ipynb_checkpoints/
+
+# Training outputs
+/logs/
+/runs/
+/runs1/
+/models/
+/results/raw/
+/results/generated/
+*.log
+*.pth
+*.pt
+*.ckpt
+word2vec.model
+
+# Generated data and experiment exports
+*.csv
+*.RData
+*.npz
+*.pkl
+*.pickle
+*.gpickle
+!data/**/*.pkl
+!data/graphs/*.pickle
+!data/graphs/*.gpickle
+
+# Local recovery/audit material; not part of the published project
+.recovery/
